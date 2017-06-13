@@ -36,11 +36,11 @@
     "webpack-manifest-plugin": "^1.0.1"
   },
   "scripts": {
+    "clean": "rm -r build/*",
     "server": "webpack-dev-server --hot --inline --content-base build",
-    "deploy": "AWS_PROFILE=default node ./scripts/deploy.js",
+    "deploy": "npm run build && node ./scripts/deploy.js",
     "dev": "webpack && npm run server",
     "build": "ENV=production WEBPACK_ENV=build ./node_modules/.bin/webpack -p --define process.env.NODE_ENV='\"production\"' --progress",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom"
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logo from './logo.svg';
+import TopBar from './top-bar/top-bar';
 import './Main.scss';
 
 class Root extends React.Component {
@@ -29,10 +29,7 @@ class Root extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
+        <TopBar/>
         <h2 onClick={this.toggleClicked}>Click me to {this.state.clicked ? 'show' : 'hide'} the text</h2>
         {this.getContentText()}
       </div>
