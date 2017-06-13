@@ -1,8 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './Main.scss';
 
-class App extends React.Component {
+class Root extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,4 +39,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Root;

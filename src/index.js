@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import Root from './Root';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+let mountNode = document.createElement('div');
+document.body.appendChild(mountNode);
+ReactDOM.render(
+  <Root />,
+  mountNode
+);
