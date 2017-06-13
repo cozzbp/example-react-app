@@ -1,4 +1,5 @@
 import React from 'react';
+
 import logo from './logo.svg';
 import './Main.scss';
 
@@ -22,7 +23,7 @@ class Root extends React.Component {
   };
 
   toggleClicked = () => {
-    this.setState({clicked: !this.state.clicked});
+    this.setState({ clicked: !this.state.clicked });
   }
 
   render() {

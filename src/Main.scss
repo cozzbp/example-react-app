@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+  background-color: #2d3038; // Override sh-core
+  font-family: "Open Sans", sans-serif;
+}
+
 .App {
   text-align: center;
 }
@@ -8,7 +15,7 @@
 }
 
 .App-header {
-  background-color: #444;
+  
   height: 150px;
   padding: 20px;
   color: white;

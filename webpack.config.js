@@ -1,17 +1,18 @@
 var path = require('path');
 var webpack = require('webpack');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var ManifestPlugin = require('webpack-manifest-plugin');
 
 var env = process.env.WEBPACK_ENV;
-var CSS_FILENAME = (env === 'build') ? '[name].[chunkhash].css' : '[name].css';
-var JS_FILENAME = (env === 'build') ? '[name].[chunkhash].js' : '[name].js';
-var VENDOR_FILENAME = (env === 'build') ? 'vendor.[chunkhash].js' : 'vendor.js';
+var CSS_FILENAME = (env === 'build') ? '[name].css' : '[name].css';
+var JS_FILENAME = (env === 'build') ? '[name].js' : '[name].js';
+var VENDOR_FILENAME = (env === 'build') ? 'vendor.js' : 'vendor.js';
 
 var config = {
   context: path.join(__dirname, "/src"),
-  devtool: 'cheap-source-map',
+  devtool: (env === 'build') ? 'nosources-source-map' : 'cheap-source-map',
   devServer: {
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -46,7 +47,7 @@ var config = {
         loader: 'file-loader?name=fonts/[name].[ext]'
       },
       {
-        test: /\.(jpg|png|eot)$/,
+        test: /\.(jpg|png|eot|ico)$/,
         loader: 'url-loader?limit=25000'
       },
     ]
@@ -61,9 +62,11 @@ var config = {
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: VENDOR_FILENAME}),
     new ExtractTextPlugin(CSS_FILENAME),
     new CopyWebpackPlugin([
+      {from: './favicon.ico'},
       {from: './index.html'},
       {from: './logo.svg'}
     ]),
+    //new BundleAnalyzerPlugin(),
     new ManifestPlugin()
   ]
 }
