@@ -1,14 +1,13 @@
-const fs = require('fs'); // utility from node.js to interact with the file system
-const zlib = require('zlib'); // utility from node.js to interact with the file system
-const path = require('path'); // utility from node.js to manage file/folder paths
+const fs = require('fs');
+const zlib = require('zlib');
+const path = require('path');
 
-const AWS = require('aws-sdk'); // imports AWS SDK
-const mime = require('mime-types'); // mime type resolver
+const AWS = require('aws-sdk');
+const mime = require('mime-types');
 
-// configuration necessary for this script to run
 const config = {
   s3BucketName: 'www.cozzbp.com',
-  folderPath: '../build' // path relative script's location
+  folderPath: '../build'
 };
 
 // initialise S3 client
@@ -49,7 +48,8 @@ const readDir = (folder) => {
                 Body: result,
                 ContentType: `${mimeType}`,
                 ContentEncoding: 'gzip'
-              }, (res) => {
+              }, (error) => {
+                if (error) { return console.log(error); }
                 console.log(`Successfully uploaded '${fileName}' with MIME type '${mimeType}'!`);
               });
             });
