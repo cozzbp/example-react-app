@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import TopBar from './top-bar/top-bar';
 import LandingPage from './landing-page/landing-page';
@@ -10,7 +10,7 @@ export default class Root extends React.Component {
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
+        <HashRouter hashType={'hashbang'}>
           <div>
             <TopBar/>
             <Switch>
@@ -18,7 +18,7 @@ export default class Root extends React.Component {
               <Route path="/contact" component={ContactPage}/>
             </Switch>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     );
   }
