@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import logo from '../logo.svg';
 
@@ -9,7 +10,9 @@ export default class TopBar extends React.Component {
     return (
       <div className="top-bar">
         <img src={logo} className="App-logo" alt="logo" />
-         <h2>Welcome to React</h2>
+        <h2>Welcome to React</h2>
+        <p><Link to="/">Root</Link></p>
+        <p><Link to="/contact">Contact</Link></p>
       </div>
     );
   }
